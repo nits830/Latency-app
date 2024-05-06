@@ -8,6 +8,9 @@ import Dashboard from './pages/Dashboard';
 import Write from './pages/Write';
 import Header from './components/Header';
 import TrendingHero from './components/TrendingHero';
+import ProtectedRoute from './components/ProtectedRoute';
+import About from './pages/About';
+import ContactUs from './pages/ContactUs';
 
 
 
@@ -16,7 +19,7 @@ import TrendingHero from './components/TrendingHero';
 
 export default function App() {
   return (
-      <div>
+      <>
         <Header/>
        
       <Routes>
@@ -24,11 +27,13 @@ export default function App() {
         <Route path="/" element={<Home />} /> 
         <Route path="/signup" element={<Signup />} /> 
         <Route path="/signin" element={<SignIn />} />  
-        <Route path="/write" element={<Write />} />
-
+        
+        <Route path="/write" element={<Write />} /> 
+        <Route path="/about" element={<About />} />  
+        <Route path="/contact" element={<ContactUs />} />  
         <Route path="*" element={<NotFound />} />  
       </Routes>
-      </div>
+      </>
     
   )
 }

@@ -3,14 +3,12 @@ import React, { useState } from 'react';
 interface Post {
   title: string;
   description: string;
-  userId: string;
 }
 
 const Write: React.FC = () => {
   const [post, setPost] = useState<Post>({
     title: '',
     description: '',
-    userId: '',
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -43,35 +41,36 @@ const Write: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="title">Title:</label>
-        <input
-          type="text"
-          id="title"
-          value={post.title}
-          onChange={handleChange}
-        />
+    <div className="min-h-screen bg-gray-100">
+      <div className="max-w-2xl mx-auto p-6">
+        <h2 className="text-2xl font-semibold mb-4">Write a New Post</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label htmlFor="title" className="block text-sm font-medium text-gray-700">Title:</label>
+            <input
+              type="text"
+              id="title"
+              value={post.title}
+              onChange={handleChange}
+              className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            />
+          </div>
+          <div className="mb-6">
+            <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">Description:</label>
+            <textarea
+              id="description"
+              value={post.description}
+              onChange={handleChange}
+              rows={6}
+              className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            />
+          </div>
+          <button type="submit" className="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Submit
+          </button>
+        </form>
       </div>
-      <div>
-        <label htmlFor="description">Description:</label>
-        <textarea
-          id="description"
-          value={post.description}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="userId">userId:</label>
-        <input
-          type="text"
-          id="userId"
-          value={post.userId}
-          onChange={handleChange}
-        />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+    </div>
   );
 };
 
